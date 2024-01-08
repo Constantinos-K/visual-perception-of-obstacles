@@ -31,8 +31,6 @@ on the same data. Our findings indicate that the focus points of humans more clo
 Transformer architecture, as opposed to the other network architectures we examined in our experiments.
 </p>
 
+## Code
 
-
-
-
-
+(Coming soon.)
