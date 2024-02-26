@@ -34,3 +34,13 @@ Transformer architecture, as opposed to the other network architectures we exami
 ## Code
 
 (Coming soon.)
+
+The files for computing the quantitative difference between the machine and human heatmaps are the following:
+compute_numerical_difference.m
+csvMeanArray.m
+ImageMeanArray.m
+all_comparison_values2.m
+
+Running the script "all_comparison_values2.m" results in the generation of a 20*7 matrix. Each of the rows represents an image from a total subset of 20 images of urban pedestrian obstacles. The columns contain the values for each of the seven Deep Learning models evaluated: "efficientnet_b0", "resnet18", "resnet50", "vgg19", "mobilenet_v2", "swin_b", "vit_b_16". "all_comparison_values2.m" iterates over all pairwise comparisons between each machine heatmap and each human heatmap.
+
+The file "csvMeanArray.m" loads the CSV files containing the machine heatmaps as matrices and divides them into 14\*14 blocks, each containing 16\*16 pixels. In the next step the mean of each single block is computed and stored in a temporary array. The file "ImageMeanArray.m" follows the same procedure as "csvMeanArray.m" applying the same processing steps on the human heatmaps. The only difference is that the human heatmaps are loaded as matrices from PNG images and not CSV files, and they additionally need to be resized to 224*224 to make their dimensions compatible with the machine matrices. Lastly, "compute_numerical_difference.m" receives the array containing the mean block values for the human heatmaps and another array with the same values for the machine heatmaps. The difference between each pair of human-machine array is calculated producing a scalar value of the difference between a particular machine and human heatmap.
